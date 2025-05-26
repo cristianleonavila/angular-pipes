@@ -6,6 +6,47 @@
 
 <section class="grid grid-cols-1 md:grid-cols2 xl:grid-cols-3 gap-4">
   <app-card title="i18nSelectPipe">
-    <p>Hola mundo desde el padre</p>
+    <p>Saludos {{ client().name }}, es un placer {{ client().gender | i18nSelect:invitationMap }} a nuestro evento</p>
+    <button class="btn btn-primary" (click)="changeClient()">Cambiar Cliente</button>
+  </app-card>
+
+  <app-card title="i18nPluralPipe">
+    <p>Actualmente hay {{clients().length | i18nPlural:clientsMap() }} </p>
+    <button [disabled]="clients().length === 0" class="btn btn-primary" (click)="eliminarPersona()">Eliminar Persona</button>
+  </app-card>
+
+  <app-card title="SlicePipe">
+    <b>Original</b>
+    <p class="text-accent">
+      {{clients().join(', ')}}
+    </p>
+    <b class="mt-2">Slice:0:2</b>
+    <p class="text-accent">
+      {{clients() | slice:0:2}}
+    </p>
+    <b class="mt-2">Slice:1:2</b>
+    <p class="text-accent">
+      {{clients() | slice:1:2}}
+    </p>
+    <b class="mt-2">Slice:0:-3</b>
+    <p class="text-accent">
+      {{clients() | slice:0:-3}}
+    </p>
+  </app-card>
+
+  <app-card title="AsyncPipe">
+    <p>{{ promise | async}}</p>
+  </app-card>
+
+    <app-card title="AsyncPipe if">
+      @if( promise | async; as value) {
+        <p class="text-accent">{{ value }}</p>
+      } @else {
+         <p class="text-accent">Cargando...</p>
+      }
+  </app-card>
+
+  <app-card title="AsyncPipe">
+    <p>{{ observableTimer | async}}</p>
   </app-card>
 </section>
