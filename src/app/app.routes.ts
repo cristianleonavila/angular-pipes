@@ -18,6 +18,7 @@ export const routes: Routes = [
   },
   {
     path: 'custom',
+    title: 'Pipes Personalizados',
     loadComponent: () => import('./pages/custom/custom.component')
   },
   {
