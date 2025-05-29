@@ -16,7 +16,17 @@
 
 <section class="my-2">
   <h1 class="text-2xl font-bold">Pipes Personalizados en Acción</h1>
+
   <div class="flex gap-2 justify-end w-full p-2">
+
+    <input
+      type="text"
+      class="input input-bordered w-full max-w-xs"
+      placeholder="Buscar héroe"
+      (input)="searchQuery.set(txtSearch.value)"
+      #txtSearch
+    />
+
     <button type="button"
            class="btn btn-primary" (click)="sortBy.set('name')">Por nombre</button>
     <button type="button" class="btn btn-accent" (click)="sortBy.set('canFly')">Puede volar?</button>
@@ -37,7 +47,7 @@
       </tr>
     </thead>
     <tbody>
-      @for(hero of heroes() | heroSortBy:sortBy(); track hero.id; let i = $index) {
+      @for(hero of heroes() | heroFilter:searchQuery() | heroSortBy:sortBy(); track hero.id; let i = $index) {
       <tr>
         <th>{{ i + 1 }}</th>
         <td>

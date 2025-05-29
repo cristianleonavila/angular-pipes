@@ -8,10 +8,11 @@ import { HeroTextColorPipe } from "../../pipes/hero-text-color.pipe";
 import { HeroCreatorPipe } from "../../pipes/hero-creator.pipe";
 import { HeroSortByPipe } from "../../pipes/hero-sort-by.pipe";
 import { JsonPipe } from '@angular/common';
+import { HeroFilterPipe } from "../../pipes/hero-filter.pipe";
 
 @Component({
   selector: 'app-custom',
-  imports: [JsonPipe, ToggleCasePipe, HeroCanFlyTextPipe, HeroColorPipe, HeroTextColorPipe, HeroCreatorPipe, HeroSortByPipe],
+  imports: [JsonPipe, ToggleCasePipe, HeroCanFlyTextPipe, HeroColorPipe, HeroTextColorPipe, HeroCreatorPipe, HeroSortByPipe, HeroFilterPipe],
   templateUrl: './custom.component.html',
   styles: ``
 })
